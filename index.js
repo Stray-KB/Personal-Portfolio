@@ -1,6 +1,3 @@
-const staticProjects = document.getElementById("myProjects");
-const ul = document.createElement("ul");
-
 const projects = [
   {
     id: 1,
@@ -22,16 +19,25 @@ const projects = [
   },
 ];
 
+const projectList = document.createElement("ul");
 
-Use JavaScript to create an unordered list of at least three list items that describe hypothetical future projects in your "Projects" section. Each list item should have:
+projects.forEach(function (project) {
+  const listItem = document.createElement("li");
+  listItem.className = "project";
 
-A classname of "project".
-A nested link.
-The href can be "#" or can be to a project you completed from the Computer Programming course. (Use the setAttribute method to set the "href" attribute of your anchor element to equal the url of the project, even if that url is just "#" for now; if you're using an actual url, also set the "target" attribute equal to "_blank" so that link opens in a new tab.)
-It should contain a nested title as a header.
-A description as a paragraph.
-Create an array of objects that represent the data for each project. Each object should have the following keys (here I'm giving example values for each key):
+  const link = document.createElement("a");
+  link.setAttribute("href", project.url);
 
-Title: "My First Project".
-URL: "http://link.to.my.first.project.com".
-Description: "My first project is the first project I ever made, and it's cool because...".
+  const title = document.createElement("h2");
+  title.textContent = project.title;
+
+  const description = document.createElement("p");
+  description.textContent = project.description;
+
+  link.appendChild(title);
+  link.appendChild(description);
+  listItem.appendChild(link);
+  projectList.appendChild(listItem);
+});
+
+document.querySelector("#projects").appendChild(projectList);
