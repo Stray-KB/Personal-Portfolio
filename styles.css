@@ -1,0 +1,41 @@
+body {
+  font-family: "Redaction 20", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+h1, h2, h3 {
+  font-family: "Saira", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-variation-settings:
+  "wdth" 100;
+}
+
+header {
+    list-style-type: none;
+    border-radius: 15px;
+    color: #f9b600;
+    background-image: url("images/stars_black_sky_space_during_nighttime_4k_hd_space-1920x1080.jpg");
+    font-size: 50px;
+    text-align: center;
+}
+
+nav ul{
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 1rem 2rem;
+  margin: 0;
+}
+
+nav ul li a {
+  color: rgb(255, 255, 104);
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  color: rgb(255, 255, 167);
+  text-decoration: underline;
+}
