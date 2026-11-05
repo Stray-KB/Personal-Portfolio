@@ -39,3 +39,58 @@ nav ul li a:hover {
   color: rgb(255, 255, 167);
   text-decoration: underline;
 }
+
+/* upper portion */
+
+.bio-content h3 {
+  margin-left: 100px;
+  text-align: left;
+}
+
+.bio-content p {
+  max-width: 20%;
+  margin: 10px;
+  background-color: rgb(28, 183, 20);
+  background-size: auto;
+  border-radius: 10px;
+}
+
+#projects{
+  text-align: right;
+  transform: translateY(-460px);
+}
+
+#projects h3 {
+  margin-top: 25px;
+}
+
+ul {
+  list-style-type: none; 
+  margin: 0;             
+  padding: 0;             
+}
+
+#contact {
+  margin-top: -325px;
+  display: flex;
+  justify-content: center;
+}
+
+.name {
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+.subject-email{
+  display: flex;
+  justify-content: center;
+}
+
+.message-me {
+  margin-left: 90px;
+}
+
+footer {
+  text-align: center;
+}

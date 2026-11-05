@@ -19,6 +19,7 @@ const projects = [
 const projectList = document.createElement("ul");
 
 projects.forEach(function (project) {
+
   const listItem = document.createElement("li");
   listItem.className = "project";
 
