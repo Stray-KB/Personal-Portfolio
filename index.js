@@ -32,6 +32,18 @@ projects.forEach(function (project) {
   const description = document.createElement("p");
   description.textContent = project.description;
 
+  description.style.display = "none";
+
+  title.addEventListener("click", function(event) {
+  event.preventDefault();
+
+  if (description.style.display === "none") {
+    description.style.display = "block";
+  } else {
+    description.style.display = "none";
+  }
+  });
+
   link.appendChild(title);
   link.appendChild(description);
   listItem.appendChild(link);

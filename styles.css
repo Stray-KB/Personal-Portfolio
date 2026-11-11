@@ -55,20 +55,9 @@ nav ul li a:hover {
   border-radius: 10px;
 }
 
-#projects{
-  text-align: right;
-  transform: translateY(-460px);
-}
+/* upper section end /|\ */
 
-#projects h3 {
-  margin-top: 25px;
-}
-
-ul {
-  list-style-type: none; 
-  margin: 0;             
-  padding: 0;             
-}
+/* contact section start \|/ */
 
 #contact {
   margin-top: -325px;
@@ -91,6 +80,27 @@ ul {
   margin-left: 90px;
 }
 
+/* contact section end /|\ */
+
 footer {
   text-align: center;
 }
+
+/* project section start \|/ */
+
+#projects{
+  text-align: right;
+  transform: translateY(-460px);
+}
+
+#projects > h3 {
+  margin-top: 25px;
+}
+
+ul {
+  list-style-type: none; 
+  margin: 0;             
+  padding: 0;             
+}
+
+/* project section end /|\ */
