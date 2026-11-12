@@ -54,3 +54,10 @@ projects.forEach(function (project) {
 
 document.querySelector("#projects").appendChild(projectList);
 
+class Reference {
+  constructor(name, company, email) {
+    this.name = name;
+    this.company = company;
+    this.email = email;
+  }
+}
