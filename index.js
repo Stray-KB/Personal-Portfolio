@@ -155,4 +155,14 @@ function displayReferences() {
     referenceItem.appendChild(testimonialList);
     referenceList.appendChild(referenceItem);
   });
+
+  const totalRating = testimonials.reduce(function(total, testimonial) {
+    return total + testimonial.rating;}, 0);
+
+  averageRating.textContent = testimonials.length > 0
+    ? (totalRating / testimonials.length).toFixed(1)
+    : "0";
 }
+
+const referenceForm = document.querySelector("reference-form");
+const formMessage = document.querySelector("#form-message");
