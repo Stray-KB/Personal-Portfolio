@@ -54,7 +54,7 @@ projects.forEach(function (project) {
 
 document.querySelector("#projects").appendChild(projectList);
 
-// let storageMethod = "localStorager";
+// let storageMethod = "localStorage";
 let storageMethod = "cookies";
 
 class DAO {
@@ -63,13 +63,9 @@ class DAO {
   }
 
   getAll() {
-    if (storageMethod === "localStorage") {
-      return JSON.parse(localStorage.getItem(this.key)) || [];
-    }
+    if (storageMethod === "localStorage") {return JSON.parse(localStorage.getItem(this.key)) || [];}
 
-    const cookie = document.cookie.split("; ").find(function (item) {
-      return item.startsWith(`${this.key}=`);
-    }, this);
+    const cookie = document.cookie.split("; ").find(function (item) {return item.startsWith(`${this.key}=`);}, this);
 
     return cookie ? JSON.parse(decodeURIComponent(cookie.substring(this.key.length + 1))) : [];
   }
@@ -88,7 +84,6 @@ class DAO {
 
 const referenceDAO = new DAO("references");
 const testimonialDAO = new DAO("testimonials");
-
 function addSeedData(method) {
   storageMethod = method;
 

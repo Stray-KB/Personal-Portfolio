@@ -60,7 +60,9 @@ nav ul li a:hover {
 /* contact section start \|/ */
 
 #contact {
+  text-align: center;
   margin-top: -325px;
+  margin-left: 450px;
   display: flex;
   justify-content: center;
 }
@@ -104,3 +106,10 @@ ul {
 }
 
 /* project section end /|\ */
+
+/* references section start \|/ */
+
+#references {
+    text-align: right;
+    margin-left: 300px;
+}
