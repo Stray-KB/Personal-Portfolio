@@ -73,3 +73,27 @@ class Testimonial {
 
 const referenceDAO = new DataAccessObject("references");
 const testimonialDAO = new DataAccessObject("testimonials");
+
+class DataAccessObject {
+  constructor(key, storageMethod) {
+    this.key = key;
+    this.storageMethod = storageMethod;
+  }
+
+  getAll() {
+    if(this.storageMethod === "localStorage") {
+      return JSON.parse(localStorage.getItem(this.key)) || [];
+    } else {
+      const cookie = document.cookie
+        .split("; ")
+        .find(item => item.startsWith(`${this.key}=`));\
+      return cookie ? JSON.parse(decodeURIComponent(cookie.substring(this.key.length + 1))) : [];
+    }
+  }
+
+  add(item) {
+    const items = this.getAll();
+    items.push(item);
+    localStorage.setItem(this.key, JSON.stringify(items));
+  }
+}
