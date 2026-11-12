@@ -132,4 +132,14 @@ const averageRating = document.querySelector("#average-rating");
 function displayReferences() {
   const references = referenceDAO.getAll();
   const testimonials = testimonialDAO.getAll();
+
+  referenceList.innerHTML = "";
+
+  references.forEach(function(reference) {
+    const referenceItem = document.createElement("li");
+    const referenceDetails = document.createElement("p");
+    referenceDetails.textContent = `${reference.name} - ${reference.company} (${reference.email})`;
+    referenceItem.appendChild(referenceDetails);
+    referenceList.appendChild(referenceItem);
+  });
 }
