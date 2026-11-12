@@ -124,7 +124,7 @@ const averageRating = document.querySelector("#average-rating");
 const referenceForm = document.querySelector("#reference-form");
 const formMessage = document.querySelector("#form-message");
 
-storageMethod = "localStorage"
+storageMethod = "localStorage";
 
 function displayReferences() {
   const references = referenceDAO.getAll();
