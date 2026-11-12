@@ -86,7 +86,7 @@ class DataAccessObject {
     } else {
       const cookie = document.cookie
         .split("; ")
-        .find(item => item.startsWith(`${this.key}=`));\
+        .find(item => item.startsWith(`${this.key}=`));
       return cookie ? JSON.parse(decodeURIComponent(cookie.substring(this.key.length + 1))) : [];
     }
   }
@@ -100,4 +100,14 @@ class DataAccessObject {
       document.cookie = `${this.key}=${encodeURIComponent(JSON.stringify(items))}`;
     }
   }
+}
+
+for (let i = 0; i < 3; i++) {
+  const reference = new Reference(
+    i + 1,
+    faker.person.fullName(),
+    faker.company.name(),
+    faker.internet.email()
+  );
+  referenceDAO.add(reference);
 }
