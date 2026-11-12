@@ -119,13 +119,12 @@ function addSeedData(method) {
 addSeedData("localStorage");
 addSeedData("cookies");
 
-const storageSelector = document.querySelector("#storage-method");
 const referenceList = document.querySelector("#reference-list");
 const averageRating = document.querySelector("#average-rating");
 const referenceForm = document.querySelector("#reference-form");
 const formMessage = document.querySelector("#form-message");
 
-storageMethod = storageSelector.value;
+storageMethod = "localStorage"
 
 function displayReferences() {
   const references = referenceDAO.getAll();
@@ -168,11 +167,6 @@ function displayReferences() {
     averageRating.textContent = (totalRating / testimonials.length).toFixed(1);
   }
 }
-
-storageSelector.addEventListener("change", function () {
-  storageMethod = storageSelector.value;
-  displayReferences();
-});
 
 referenceForm.addEventListener("submit", function (event) {
   event.preventDefault();
