@@ -53,7 +53,8 @@ projects.forEach(function (project) {
 
 document.querySelector("#projects").appendChild(projectList);
 
-let storageMethod = "localStorage";
+// let storageMethod = "localStorager";
+let storageMethod = "cookies";
 
 class DAO {
   constructor(key) {
@@ -123,7 +124,7 @@ const averageRating = document.querySelector("#average-rating");
 const referenceForm = document.querySelector("#reference-form");
 const formMessage = document.querySelector("#form-message");
 
-storageMethod = storageSelector.value;
+storageMethod = "localStorage";
 
 function displayReferences() {
   const references = referenceDAO.getAll();
@@ -166,11 +167,6 @@ function displayReferences() {
     averageRating.textContent = (totalRating / testimonials.length).toFixed(1);
   }
 }
-
-storageSelector.addEventListener("change", function () {
-  storageMethod = storageSelector.value;
-  displayReferences();
-});
 
 referenceForm.addEventListener("submit", function (event) {
   event.preventDefault();
