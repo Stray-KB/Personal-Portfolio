@@ -1,3 +1,4 @@
+
 const projects = [
   {
     title: "First Project",
@@ -51,8 +52,6 @@ projects.forEach(function (project) {
 });
 
 document.querySelector("#projects").appendChild(projectList);
-
-import { faker } from "@faker-js/faker";
 
 let storageMethod = "localStorage";
 
@@ -124,7 +123,7 @@ const averageRating = document.querySelector("#average-rating");
 const referenceForm = document.querySelector("#reference-form");
 const formMessage = document.querySelector("#form-message");
 
-storageMethod = "localStorage";
+storageMethod = storageSelector.value;
 
 function displayReferences() {
   const references = referenceDAO.getAll();
@@ -167,6 +166,11 @@ function displayReferences() {
     averageRating.textContent = (totalRating / testimonials.length).toFixed(1);
   }
 }
+
+storageSelector.addEventListener("change", function () {
+  storageMethod = storageSelector.value;
+  displayReferences();
+});
 
 referenceForm.addEventListener("submit", function (event) {
   event.preventDefault();
