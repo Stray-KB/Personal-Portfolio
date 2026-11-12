@@ -102,6 +102,7 @@ class DataAccessObject {
   }
 }
 
+if(referenceDAO.getAll().length === 0) {
 for (let i = 0; i < 3; i++) {
   const reference = new Reference(
     i + 1,
@@ -110,4 +111,17 @@ for (let i = 0; i < 3; i++) {
     faker.internet.email()
   );
   referenceDAO.add(reference);
+ }
+}
+
+if (testimonialDAO.getAll().length === 0) {
+  const references = referenceDAO.getAll();
+  references.forEach(function(reference) {
+    const testimonial = new Testimonial(
+      faker.lorem.sentence(),
+      faker.number.int({min:1, max:5}),
+      reference.id
+    );
+    testimonialDAO.add(testimonial);
+  })
 }
