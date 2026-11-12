@@ -139,7 +139,20 @@ function displayReferences() {
     const referenceItem = document.createElement("li");
     const referenceDetails = document.createElement("p");
     referenceDetails.textContent = `${reference.name} - ${reference.company} (${reference.email})`;
+
+    const testimonialList = document.createElement("ul");
+    const referenceTestimonials = testimonials.filter(function(testimonial) {
+      return testimonial.referenceId === reference.id;
+    });
+
+    referenceTestimonials.forEach(function(testimonial) {
+      const testimonialItem = document.createElement("li");
+      testimonialItem.textContent = `${testimonial.comment} Rating: ${testimonial.rating}/5`;
+      testimonialList.appendChild(testimonialItem);
+    });
+
     referenceItem.appendChild(referenceDetails);
+    referenceItem.appendChild(testimonialList);
     referenceList.appendChild(referenceItem);
   });
 }
