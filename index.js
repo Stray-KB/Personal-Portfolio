@@ -71,8 +71,8 @@ class Testimonial {
   }
 }
 
-const referenceDAO = new DataAccessObject("references");
-const testimonialDAO = new DataAccessObject("testimonials");
+const referenceDAO = new DataAccessObject("references", "localStorage");
+const testimonialDAO = new DataAccessObject("testimonials", "localStorage");
 
 class DataAccessObject {
   constructor(key, storageMethod) {
@@ -94,6 +94,10 @@ class DataAccessObject {
   add(item) {
     const items = this.getAll();
     items.push(item);
-    localStorage.setItem(this.key, JSON.stringify(items));
+    if (this.storageMethod === "localStorage") {
+      localStorage.setItem(this.key, JSON.stringify(items));
+    } else {
+      document.cookie = `${this.key}=${encodeURIComponent(JSON.stringify(items))}`;
+    }
   }
 }
