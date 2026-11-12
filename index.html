@@ -23,7 +23,8 @@
             </nav>
         </div>
     </header>
-
+    
+    <main>
         <!-- I dont have any professial images i can use, but as soon as i get one ill replace them -->
         <section id="bio">
             <div class="bio-content">
@@ -73,6 +74,53 @@
 
                 <button>Contact Me</button>
             </form>
+
+        <section id="references">
+            <h2>References</h2>
+            <h3>Average Rating: <span id="average-rating">0</span></h3>
+
+            <h4>References</h4>
+            <ul id="reference-list"></ul>
+
+            <h4>Reference Me!</h4>
+            <form id="reference-form" class="contact-form">
+                <div class="name">
+                    <div class="input-group">
+                        <label for="reference-name">Name</label>
+                        <input id="reference-name" type="text" placeholder="Your name" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="reference-company">Company </label>
+                        <input id="reference-company" type="text" placeholder="Company name">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="reference-email">Email</label>
+                    <input id="reference-email" type="email" placeholder="Enter your email" required>
+                </div>
+
+                <div class="message-me">
+                    <label for="testimonial-comment">Testimonial </label>
+                    <textarea id="testimonial-comment" placeholder="comment"></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label for="testimonial-rating">Rating (optional)</label>
+                    <select id="testimonial-rating">
+                        <option value="">No rating</option>
+                        <option value="1">1 - Poor</option>
+                        <option value="2">2 - Fair</option>
+                        <option value="3">3 - Good</option>
+                        <option value="4">4 - Very good</option>
+                        <option value="5">5 - Excellent</option>
+                    </select>
+                </div>
+
+                <button type="submit">Submit Reference</button>
+                <p id="form-message"></p>
+            </form>
+        </section>
         </section>
     </main>
     <footer>2024 copyright</footer>
