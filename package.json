@@ -10,5 +10,8 @@
   "license": "ISC",
   "devDependencies": {
     "vite": "^8.3.8"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^9.9.0"
   }
 }
