@@ -55,7 +55,8 @@ projects.forEach(function (project) {
 document.querySelector("#projects").appendChild(projectList);
 
 class Reference {
-  constructor(name, company, email) {
+  constructor(name, company, email, id) {
+    this.id = id;
     this.name = name;
     this.company = company;
     this.email = email;
@@ -69,3 +70,6 @@ class Testimonial {
     this.referenceId = referenceId;
   }
 }
+
+const referenceDAO = new DataAccessObject("references");
+const testimonialDAO = new DataAccessObject("testimonials");
