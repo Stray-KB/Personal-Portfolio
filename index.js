@@ -61,3 +61,11 @@ class Reference {
     this.email = email;
   }
 }
+
+class Testimonial {
+  constructor(comment, rating, referenceId) {
+    this.comment = comment;
+    this.rating = rating;
+    this.referenceId = referenceId;
+  }
+}
