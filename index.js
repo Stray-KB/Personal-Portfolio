@@ -125,3 +125,11 @@ if (testimonialDAO.getAll().length === 0) {
     testimonialDAO.add(testimonial);
   })
 }
+
+const referenceList = document.querySelector("#reference-list");
+const averageRating = document.querySelector("#average-rating");
+
+function displayReferences() {
+  const references = referenceDAO.getAll();
+  const testimonials = testimonialDAO.getAll();
+}
