@@ -183,7 +183,8 @@ class DataAccessObject {
 
 const referenceDAO = new DataAccessObject("references", "localStorage");
 
-const testimonialStorage = "sessionStorage";
+// const testimonialStorage = "cookie";
+const testimonialStorage = "cookie";
 
 const testimonialDAO = testimonialStorage === "sessionStorage"
   ? new SessionStorageTestimonialDAO()
