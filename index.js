@@ -54,20 +54,36 @@ projects.forEach(function (project) {
 
 document.querySelector("#projects").appendChild(projectList);
 
-class Reference {
+class Reference extends DatabaseObject{
   constructor(name, company, email, id) {
+    super();
     this.id = id;
     this.name = name;
     this.company = company;
     this.email = email;
   }
+
+  toString(){
+    return `${this.name} - ${this.company} (${this.email})`;
+  }
 }
 
-class Testimonial {
+class Testimonial extends DatabaseObject {
   constructor(comment, rating, referenceId) {
+    super();
     this.comment = comment;
     this.rating = rating;
     this.referenceId = referenceId;
+  }
+
+  toString() {
+    return `${this.comment} Rating: ${this.rating}/5`;
+  }
+}
+
+class DatabaseObject {
+  toString() {
+    throw new Error("toString() must be overridden");
   }
 }
 
@@ -78,12 +94,12 @@ class DataAccessObject {
   }
 
   getAll() {
-    if(this.storageMethod === "localStorage") {
+    if (this.storageMethod === "localStorage") {
       return JSON.parse(localStorage.getItem(this.key)) || [];
     } else {
       const cookie = document.cookie
         .split("; ")
-        .find(item => item.startsWith(`${this.key}=`));
+        .find((item) => item.startsWith(`${this.key}=`));
       return cookie ? JSON.parse(decodeURIComponent(cookie.substring(this.key.length + 1))) : [];
     }
   }
