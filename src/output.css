@@ -609,6 +609,10 @@ video {
   height: 20rem;
 }
 
+.h-screen {
+  height: 100vh;
+}
+
 .w-96 {
   width: 24rem;
 }
@@ -627,6 +631,10 @@ video {
 
 .flex-col {
   flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
 }
 
 .place-content-center {
@@ -671,6 +679,11 @@ video {
 .bg-green-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(34 197 94 / var(--tw-bg-opacity, 1));
+}
+
+.bg-slate-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(241 245 249 / var(--tw-bg-opacity, 1));
 }
 
 .p-2 {
