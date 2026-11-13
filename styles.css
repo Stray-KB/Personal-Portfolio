@@ -88,28 +88,11 @@ footer {
   text-align: center;
 }
 
-/* project section start \|/ */
-
-#projects{
-  text-align: right;
-  transform: translateY(-460px);
-}
-
-#projects > h3 {
-  margin-top: 25px;
-}
-
-ul {
-  list-style-type: none; 
-  margin: 0;             
-  padding: 0;             
-}
-
-/* project section end /|\ */
 
 /* references section start \|/ */
 
 #references {
+    margin-top: -150px;
     text-align: right;
     margin-left: 300px;
 }
