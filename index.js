@@ -99,8 +99,11 @@ class DataAccessObject {
   }
 }
 
-const referenceDAO = new DataAccessObject("references", "localStorage");
-const testimonialDAO = new DataAccessObject("testimonials", "localStorage");
+// const storageMethod = "cookie"
+const storageMethod = "cookie";
+
+const referenceDAO = new DataAccessObject("references", storageMethod);
+const testimonialDAO = new DataAccessObject("testimonials", storageMethod);
 
 if(referenceDAO.getAll().length === 0) {
 for (let i = 0; i < 3; i++) {
@@ -164,6 +167,9 @@ function displayReferences() {
     : "0";
 }
 
+const referenceForm = document.querySelector("#reference-form");
+const formMessage = document.querySelector("#form-message");
+
 referenceForm.addEventListener("submit", function(event) {
   event.preventDefault();
 
@@ -179,7 +185,7 @@ referenceForm.addEventListener("submit", function(event) {
   }
 
   const referenceId = Date.now();
-  const reference = new Reference(referenceId, name, company, email);
+  const reference = new Reference(name, company, email, referenceId);
   referenceDAO.add(reference);
 
   if (comment && rating) {
@@ -192,7 +198,5 @@ referenceForm.addEventListener("submit", function(event) {
   displayReferences();
 });
 
-const referenceForm = document.querySelector("reference-form");
-const formMessage = document.querySelector("#form-message");
 
 displayReferences();
