@@ -164,5 +164,35 @@ function displayReferences() {
     : "0";
 }
 
+referenceForm.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const name = document.querySelector("#reference-name").value.trim();
+  const company = document.querySelector("#reference-company").value.trim();
+  const email = document.querySelector("#reference-email").value.trim();
+  const comment = document.querySelector("#testimonial-comment").value.trim();
+  const rating = document.querySelector("#testimonial-rating").value;
+
+  if ((comment && !rating) || (!comment && rating)) {
+    formMessage.textContent = "Enter a testimonial or rating, or keep them blank"
+    return;
+  }
+
+  const referenceId = Date.now();
+  const reference = new Reference(referenceId, name, company, email);
+  referenceDAO.add(reference);
+
+  if (comment && rating) {
+    const testimonial = new Testimonial(comment, Number(rating), referenceId);
+    testimonialDAO.add(testimonial);
+  }
+
+  referenceForm.reset();
+  formMessage.textContent = "Reference added";
+  displayReferences();
+});
+
 const referenceForm = document.querySelector("reference-form");
 const formMessage = document.querySelector("#form-message");
+
+displayReferences();
