@@ -54,6 +54,12 @@ projects.forEach(function (project) {
 
 document.querySelector("#projects").appendChild(projectList);
 
+class DatabaseObject {
+  toString() {
+    throw new Error("toString() must be overridden");
+  }
+}
+
 class Reference extends DatabaseObject{
   constructor(name, company, email, id) {
     super();
@@ -95,17 +101,17 @@ class TestimonialDAO {
 
 class SessionStorageTestimonialDAO extends TestimonialDAO {
   getAll() {
-  const testimonials = JSON.parse(sessionStorage.getItem("testimonials")) || [];
-  return testimonials.map(function(testimonial) {
-    return new Testimonial(
-      testimonial.comment,
-      testimonial.rating,
-      testimonial.referenceId
-    );
-  });
-}
+    const testimonials = JSON.parse(sessionStorage.getItem("testimonials")) || [];
+    return testimonials.map(function(testimonial) {
+      return new Testimonial(
+        testimonial.comment,
+        testimonial.rating,
+        testimonial.referenceId
+      );
+    });
+  }
 
-  create() {
+  create(testimonial) {
     const testimonials = this.getAll();
     testimonials.push(testimonial);
     sessionStorage.setItem("testimonials", JSON.stringify(testimonials));
@@ -144,12 +150,6 @@ class TestimonialService {
 
   createTestimonial(testimonial) {
     this.testimonialDAO.create(testimonial);
-  }
-}
-
-class DatabaseObject {
-  toString() {
-    throw new Error("toString() must be overridden");
   }
 }
 
