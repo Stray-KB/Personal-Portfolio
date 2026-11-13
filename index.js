@@ -211,7 +211,7 @@ if (testimonialDAO.getAll().length === 0) {
       faker.number.int({min:1, max:5}),
       reference.id
     );
-    testimonialDAO.createTestimonial(testimonial);
+    testimonialService.createTestimonial(testimonial);
   });
 }
 
