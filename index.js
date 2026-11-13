@@ -71,9 +71,6 @@ class Testimonial {
   }
 }
 
-const referenceDAO = new DataAccessObject("references", "localStorage");
-const testimonialDAO = new DataAccessObject("testimonials", "localStorage");
-
 class DataAccessObject {
   constructor(key, storageMethod) {
     this.key = key;
@@ -102,13 +99,16 @@ class DataAccessObject {
   }
 }
 
+const referenceDAO = new DataAccessObject("references", "localStorage");
+const testimonialDAO = new DataAccessObject("testimonials", "localStorage");
+
 if(referenceDAO.getAll().length === 0) {
 for (let i = 0; i < 3; i++) {
   const reference = new Reference(
-    i + 1,
     faker.person.fullName(),
     faker.company.name(),
-    faker.internet.email()
+    faker.internet.email(),
+    i + 1
   );
   referenceDAO.add(reference);
  }
