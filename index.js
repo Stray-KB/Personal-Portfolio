@@ -77,7 +77,9 @@ class Testimonial extends DatabaseObject {
   }
 
   toString() {
-    return `${this.comment} Rating: ${this.rating}/5`;
+    const references = referenceDAO.getAll();
+    const author = references.find(reference => reference.id === this.referenceId);
+    return `${this.comment} - ${author ? author.name : "Unknown"} - ${this.rating}/5`;
   }
 }
 
