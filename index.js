@@ -112,6 +112,31 @@ class SessionStorageTestimonialDAO extends TestimonialDAO {
   }
 }
 
+class CookieStorageTestimonialDAO extends TestimonialDAO {
+  getAll() {
+    const cookie = document.cookie
+      .split("; ")
+      .find(item => item.startsWith("testimonials="));
+    const testimonials = cookie
+      ? JSON.parse(decodeURIComponent(cookie.substring("testimonials=".length))) : [];
+
+    return testimonials.map(function(testimonial) {
+      return new Testimonial(
+        testimonial.comment,
+        testimonial.rating,
+        testimonial.referenceId
+      );
+    });
+  }
+
+  createTestimonial(testimonial) {
+    const testimonials = this.getAll();
+    testimonials.push(testimonial);
+
+    document.cookie = `testimonials=${encodeURIComponent(JSON.stringify(testimonials))}`;
+  }
+}
+
 class DatabaseObject {
   toString() {
     throw new Error("toString() must be overridden");
@@ -146,11 +171,13 @@ class DataAccessObject {
   }
 }
 
-// const storageMethod = "cookie"
-const storageMethod = "cookie";
+const referenceDAO = new DataAccessObject("references", "localStorage");
 
-const referenceDAO = new DataAccessObject("references", storageMethod);
-const testimonialDAO = new DataAccessObject("testimonials", storageMethod);
+const testimonialStorage = "sessionStorage";
+
+const testimonialDAO = testimonialStorage === "sessionStorage"
+  ? new SessionStorageTestimonialDAO()
+  : new CookieStorageTestimonialDAO();
 
 if(referenceDAO.getAll().length === 0) {
 for (let i = 0; i < 3; i++) {
@@ -172,8 +199,8 @@ if (testimonialDAO.getAll().length === 0) {
       faker.number.int({min:1, max:5}),
       reference.id
     );
-    testimonialDAO.add(testimonial);
-  })
+    testimonialDAO.createTestimonial(testimonial);
+  });
 }
 
 const referenceList = document.querySelector("#reference-list");
