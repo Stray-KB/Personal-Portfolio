@@ -88,7 +88,7 @@ class TestimonialDAO {
     throw new Error("getAll() isnt overridden")
   }
 
-  createTestimonial() {
+  create() {
     throw new Error("getAll() isnt overridden")
   }
 }
@@ -105,7 +105,7 @@ class SessionStorageTestimonialDAO extends TestimonialDAO {
   });
 }
 
-  createTestimonial() {
+  create() {
     const testimonials = this.getAll();
     testimonials.push(testimonial);
     sessionStorage.setItem("testimonials", JSON.stringify(testimonials));
@@ -129,7 +129,7 @@ class CookieStorageTestimonialDAO extends TestimonialDAO {
     });
   }
 
-  createTestimonial(testimonial) {
+  create(testimonial) {
     const testimonials = this.getAll();
     testimonials.push(testimonial);
 
@@ -188,6 +188,8 @@ const testimonialStorage = "sessionStorage";
 const testimonialDAO = testimonialStorage === "sessionStorage"
   ? new SessionStorageTestimonialDAO()
   : new CookieStorageTestimonialDAO();
+
+const testimonialService = new TestimonialService(testimonialDAO);
 
 if(referenceDAO.getAll().length === 0) {
 for (let i = 0; i < 3; i++) {
@@ -264,7 +266,7 @@ referenceForm.addEventListener("submit", function(event) {
   const rating = document.querySelector("#testimonial-rating").value;
 
   if ((comment && !rating) || (!comment && rating)) {
-    formMessage.textContent = "Enter a testimonial or rating, or keep them blank"
+    formMessage.textContent = "Enter both a testimonial and rating, or leave both blank.";
     return;
   }
 
@@ -274,13 +276,12 @@ referenceForm.addEventListener("submit", function(event) {
 
   if (comment && rating) {
     const testimonial = new Testimonial(comment, Number(rating), referenceId);
-    testimonialDAO.createTestimonial(testimonial);
+    testimonialService.createTestimonial(testimonial);
   }
 
   referenceForm.reset();
   formMessage.textContent = "Reference added";
   displayReferences();
 });
-
 
 displayReferences();
