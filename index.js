@@ -83,6 +83,35 @@ class Testimonial extends DatabaseObject {
   }
 }
 
+class TestimonialDAO {
+  getAll() {
+    throw new Error("getAll() isnt overridden")
+  }
+
+  createTestimonial() {
+    throw new Error("getAll() isnt overridden")
+  }
+}
+
+class SessionStorageTestimonialDAO extends TestimonialDAO {
+  getAll() {
+  const testimonials = JSON.parse(sessionStorage.getItem("testimonials")) || [];
+  return testimonials.map(function(testimonial) {
+    return new Testimonial(
+      testimonial.comment,
+      testimonial.rating,
+      testimonial.referenceId
+    );
+  });
+}
+
+  createTestimonial() {
+    const testimonials = this.getAll();
+    testimonials.push(testimonial);
+    sessionStorage.setItem("testimonials", JSON.stringify(testimonials));
+  }
+}
+
 class DatabaseObject {
   toString() {
     throw new Error("toString() must be overridden");
