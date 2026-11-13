@@ -137,6 +137,16 @@ class CookieStorageTestimonialDAO extends TestimonialDAO {
   }
 }
 
+class TestimonialService {
+  constructor(testimonialDAO) {
+    this.testimonialDAO = testimonialDAO;
+  }
+
+  createTestimonial(testimonial) {
+    this.testimonialDAO.create(testimonial);
+  }
+}
+
 class DatabaseObject {
   toString() {
     throw new Error("toString() must be overridden");
