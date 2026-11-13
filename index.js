@@ -264,7 +264,7 @@ referenceForm.addEventListener("submit", function(event) {
 
   if (comment && rating) {
     const testimonial = new Testimonial(comment, Number(rating), referenceId);
-    testimonialDAO.add(testimonial);
+    testimonialDAO.createTestimonial(testimonial);
   }
 
   referenceForm.reset();
