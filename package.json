@@ -9,11 +9,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "tailwindcss": "^3.4.19",
+    "@tailwindcss/vite": "^4.3.5",
+    "tailwindcss": "^4.3.5",
     "vite": "^8.3.8"
   },
   "dependencies": {
-    "@faker-js/faker": "^9.9.0",
-    "@tailwindcss/vite": "^4.3.5"
+    "@faker-js/faker": "^9.9.0"
   }
 }
